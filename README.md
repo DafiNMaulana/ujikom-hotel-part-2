@@ -151,8 +151,9 @@ This is an example of how to list things you need to use the software and how to
     ```
  6. on terminal run `composer update `
  7. Run the apache and mysql on `Xampp` or `laragon`
- 8. on terminal run `php artisan migrate --seed`
- 9. and run `php artisan key:generate`
+ 8. on your phpmyadmin make database named `hotel_antierror`
+ 9. on terminal run `php artisan migrate --seed`
+ 10. and run `php artisan key:generate`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -161,35 +162,40 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. on terminal `php artisan serve`
-2. user
-    ```
-    localhost:8000
-    ```
-3. admin
-    ```
-    localhost:8000/admin
-    or
-    localhost:8000/login
-    ```
-    - admin account 
+- on terminal run `php artisan serve`
+    1. user page
         ```
-        username : admin
-        password : 123123
+        localhost:8000
+        or
+        localhost:8000/home
         ```
-    - receptionist
+    2. admin page
         ```
-        username : putriAngraini
-        password : 123123
+        localhost:8000/admin
+        or
+        localhost:8000/admin/login
         ```
+        - admin account 
+            ```
+            username : admin
+            password : 123123
+            ```
+        - receptionist
+            ```
+            username : putriAngraini
+            password : 123123
+            ```
 <!-- ROADMAP -->
 ## Sources
 
 This Readme.md is made by [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 <br>
+
+<div align="center">
     <a href="https://github.com/othneildrew/Best-README-Template">
         <img src="https://github.com/othneildrew/Best-README-Template/blob/master/images/logo.png" alt="Logo" width="80" height="80">
      </a>
+ </div>
 
 <!-- ROADMAP -->
 <!-- ## Roadmap
