@@ -69,7 +69,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#sources">Roadmap</a></li>
+    <li><a href="#sources">Sources</a></li>
   </ol>
 </details>
 
