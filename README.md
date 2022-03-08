@@ -162,25 +162,25 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-- on terminal run `php artisan serve`
-    1. user page
+1. on terminal run `php artisan serve`
+    - user page
         ```
         localhost:8000
         or
         localhost:8000/home
         ```
-    2. admin page
+    - admin page
         ```
         localhost:8000/admin
         or
         localhost:8000/admin/login
         ```
-        - admin account 
+        admin account 
             ```
             username : admin
             password : 123123
             ```
-        - receptionist
+        receptionist
             ```
             username : putriAngraini
             password : 123123
