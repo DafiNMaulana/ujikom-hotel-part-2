@@ -34,7 +34,7 @@ Details
                         <h2>Rp. {{  number_format($kamar->harga_kamar, 2, ',', '.') }}<span>/Pernight</span></h2>
                         <table>
                             <tbody>
-                                @foreach ($fasilitasKamar as $fasilitas)
+                                @foreach ($fasilitasKamar as $fasilitas)we
                                 <tr>
                                     <td class="r-o">Size:</td>
                                     <td>{{ $fasilitas->ukuran_ruangan }}</td>

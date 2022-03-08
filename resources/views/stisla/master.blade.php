@@ -14,6 +14,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
+  <link rel="stylesheet" href="{{ asset('stisla/chartjs/dist/Chart.min.css') }}">
   <link rel="icon" type="image/x-icon" href="{{ asset('sona/img/logo.png') }}">
 </head>
 
@@ -60,6 +61,8 @@
   <script src="{{ asset('stisla/js/stisla.js') }}"></script>
 
   <!-- JS Libraies -->
+  <script src="{{ asset('stisla/chartjs/dist/Chart.bundle.min.js') }}"></script>
+  <script src="{{ asset('stisla/chartjs/dist/Chart.min.js') }}"></script>
 
   <!-- Template JS File -->
   <script src="{{ asset('stisla/js/scripts.js') }}"></script>

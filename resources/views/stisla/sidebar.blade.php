@@ -7,8 +7,8 @@
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Manage</li>
-        <li class="nav-item">
-            <a href="" class="nav-link"><i class="fas fa-chart-bar" style="font-size: 18px"></i><span>Statistik</span></a>
+        <li class="nav-item {{ 'admin/statistik' == request()->path() ? 'active' : '' }}">
+            <a href="{{ route('statistik.index') }}" class="nav-link"><i class="fas fa-chart-bar" style="font-size: 18px"></i><span>Statistik</span></a>
         </li>
         <li class="nav-item {{ 'admin/manage-pemesanan' == request()->path() ? 'active' : '' }} {{ '/' == request()->path() ? 'active' : '' }} {{ 'admin/manage-pemesanan' == request()->path() ? 'active' : '' }}   ">
             <a href="{{ route('manage-pemesanan.index') }}" class="nav-link"><i class="fas fa-book-open" style="font-size: 18px"></i><span>Manage Pemesanan</span></a>

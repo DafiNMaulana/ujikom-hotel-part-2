@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'authLevel:admin, resepsionis']], functio
     Route::resource('admin/manage-admin', 'admin\adminController');
     Route::resource('admin/manage-fasilitas-hotel', 'admin\fasilitasHotelController');
     Route::resource('admin/manage-pemesanan', 'admin\pemesananController');
+    Route::resource('admin/statistik', 'admin\statistikController');
     Route::get('/search', 'admin\PemesananController@search')->name('search');
 });
 
