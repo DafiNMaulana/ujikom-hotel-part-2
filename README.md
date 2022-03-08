@@ -127,7 +127,7 @@ This is an example of how to list things you need to use the software and how to
     ```
     https://github.com/DafiNMaulana/ujikom-hotel-part-2.git
     ```
-3. first if your php version is 8.0.11 you have to edit the `composer.json` make it like this
+3. if your php version is 8.0.11 you have to edit the `composer.json` make it like this if you dont do this You probably won't be able to go to the next step, but if your php version is 7^ you can skip this step
     ```
     "require": {
             "php": "^8.0.11",
@@ -149,11 +149,11 @@ This is an example of how to list things you need to use the software and how to
     DB_USERNAME=root
     DB_PASSWORD=
     ```
- 6. on terminal run `composer update `
- 7. Run the apache and mysql on `Xampp` or `laragon`
- 8. on your phpmyadmin make database named `hotel_antierror`
- 9. on terminal run `php artisan migrate --seed`
- 10. and run `php artisan key:generate`
+ 6. on terminal run the `composer update `
+ 7. Run the apache and mysql in `Xampp` or `laragon`
+ 8. In your phpmyadmin make a database named `hotel_antierror`
+ 9. Then run the `php artisan migrate --seed` in your terminal
+ 10. The last, you have to run `php artisan key:generate` in your terminal To be able to run `php artisan serve`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
