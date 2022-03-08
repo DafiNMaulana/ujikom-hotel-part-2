@@ -175,12 +175,12 @@ This is an example of how to list things you need to use the software and how to
         or
         localhost:8000/admin/login
         ```
-        admin account 
+        1. admin account 
             ```
             username : admin
             password : 123123
             ```
-        receptionist
+        2. receptionist
             ```
             username : putriAngraini
             password : 123123
