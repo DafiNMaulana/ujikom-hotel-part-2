@@ -180,7 +180,7 @@ This is an example of how to list things you need to use the software and how to
             username : admin
             password : 123123
             ```
-        2. Aeceptionist
+        2. Receptionist
             ```
             username : putriAngraini
             password : 123123
