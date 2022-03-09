@@ -37,7 +37,7 @@ class authController extends Controller
     public function post(Request $request)
     {
         if (Auth::attempt($request->only('username', 'password'))) {
-            return redirect('/admin/manage-pemesanan');
+            return redirect('/admin/statistik');
         }
         return redirect('admin/login')->with('toast_error', 'Ups! Username atau password salah');
     }

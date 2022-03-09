@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\admin;
+use App\Models\pemesanan;
+use App\Models\kamar;
 
 class statistikController extends Controller
 {
@@ -14,7 +17,13 @@ class statistikController extends Controller
      */
     public function index()
     {
-        return view('admin.statistik');
+        $admin = admin::where('level', '=', 'admin')->count();
+        $resepsionis = admin::where('level', '=', 'resepsionis')->count();
+        $unpaid = pemesanan::where('status_pemesanan', '=', 'unpaid')->count();
+        $checkin = pemesanan::where('status_pemesanan', '=', 'checkin')->count();
+        $checkout = pemesanan::where('status_pemesanan', '=', 'checkout')->count();
+        $kamar = kamar::count();
+        return view('admin.statistik', compact('admin', 'resepsionis', 'unpaid', 'checkin', 'checkout', 'kamar'));
     }
 
     /**
