@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\pemesanan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(adminTableSeeder::class);
         $this->call(kamarTableSeeder::class);
-        $this->call(pemesananTableSeeder::class);
+        // $this->call(pemesananTableSeeder::class);
         $this->call(fasilitasKamarTableSeeder::class);
+        factory(App\Models\pemesanan::class, 100)->create();
     }
 }
