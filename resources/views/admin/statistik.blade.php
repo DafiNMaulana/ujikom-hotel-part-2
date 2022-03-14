@@ -161,7 +161,7 @@ var myChart = new Chart(statistics_chart, {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     datasets: [{
       label: 'Statistics',
-      data: [640, 387, 530, 302, 430, 270, 488],
+      data: [{{ $kamar }}],
       borderWidth: 5,
       borderColor: '#6777ef',
       backgroundColor: 'transparent',

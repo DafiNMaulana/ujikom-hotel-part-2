@@ -23,6 +23,8 @@ class statistikController extends Controller
         $checkin = pemesanan::where('status_pemesanan', '=', 'checkin')->count();
         $checkout = pemesanan::where('status_pemesanan', '=', 'checkout')->count();
         $kamar = kamar::count();
+
+
         return view('admin.statistik', compact('admin', 'resepsionis', 'unpaid', 'checkin', 'checkout', 'kamar'));
     }
 

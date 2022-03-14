@@ -24,7 +24,7 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
                         <img src="{{ asset('stisla/img/avatar/avatar-1.png') }}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-                        <h4 class="text-dark font-weight-normal">Selamat datang <span class="font-weight-bold">Petugas Hotel</span></h4>
+                        <h4 class="text-dark font-weight-normal">Selamat datang <span class="font-weight-bold">Petugas</span></h4>
                         <p class="text-muted">Sebelum masuk login dulu YUK!</p>
                         <form method="POST" action="{{ route('login.post') }}" class="needs-validation" novalidate="">
                             @csrf
@@ -48,7 +48,7 @@
                         </form>
 
                         <div class="text-center mt-5 text-small">
-                            Copyright &copy; Ujikom-Hotel. Made with 💙 by Stisla
+                            Copyright &copy; Ujikom-Inventaris. Made with 💙 by Stisla
                         </div>
                     </div>
                 </div>

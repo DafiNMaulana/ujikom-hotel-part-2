@@ -29,6 +29,7 @@ Route::resource('ruang', 'tamu\ruangController');
 // Route::resource('details.kamar', 'tamu\detailController');
 
 Route::get('admin/login', 'admin\authController@index')->name('login');
+Route::get('admin/', 'admin\authController@index');
 Route::post('admin/login-post', 'admin\authController@post')->name('login.post');
 
 Route::group(['middleware' => ['auth', 'authLevel:admin, resepsionis']], function() {
