@@ -56,36 +56,6 @@ Statistik
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
           <div class="card card-statistic-1">
             <div class="card-icon bg-success">
-              <i class="fas fa-circle"></i>
-            </div>
-            <div class="card-wrap">
-              <div class="card-header">
-                <h4>Check IN</h4>
-              </div>
-              <div class="card-body">
-                {{ $checkin }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-          <div class="card card-statistic-1">
-            <div class="card-icon bg-danger">
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
-            <div class="card-wrap">
-              <div class="card-header">
-                <h4>Check OUT</h4>
-              </div>
-              <div class="card-body">
-                {{ $checkout }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-          <div class="card card-statistic-1">
-            <div class="card-icon bg-success">
                 <i class="fas fa-bed"></i>
             </div>
             <div class="card-wrap">
@@ -100,12 +70,12 @@ Statistik
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                     <div class="card">
                     <div class="card-header">
-                        <h4>Statistics</h4>
+                        <h4>laporan pemesanan kamar bulanan</h4>
                         {{-- <div class="card-header-action">
                         <div class="btn-group">
                             <a href="#" class="btn btn-primary">Week</a>
@@ -142,9 +112,44 @@ Statistik
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+            <div class="col-lg-12 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-circle"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Check IN</h4>
+                  </div>
+                  <div class="card-body">
+                    {{ $checkin }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Check OUT</h4>
+                  </div>
+                  <div class="card-body">
+                    {{ $checkout }}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
     </section>
 @endsection
 
 @section('page-script')
 @include('admin.data_chart', ['data_chart'=>$data_chart])
 @endsection
+
+
+

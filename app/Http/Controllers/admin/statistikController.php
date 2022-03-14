@@ -40,7 +40,7 @@ class statistikController extends Controller
             'created_at',
             DB::raw('count(*) as jumlah_kamar_dipesan')
         )
-        ->whereMonth('created_at', '03')
+        ->whereMonth('created_at', date('m'))
         ->orderBy('created_at')
         ->groupBy('created_at')
         ->get();
