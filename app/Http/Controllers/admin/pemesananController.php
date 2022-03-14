@@ -17,7 +17,7 @@ class pemesananController extends Controller
      */
     public function index()
     {
-        $pemesanan = DB::table('pemesanan')->paginate(5);
+        $pemesanan = DB::table('pemesanan')->paginate(10);
         return view('admin.manage-pemesanan', compact('pemesanan'));
     }
 

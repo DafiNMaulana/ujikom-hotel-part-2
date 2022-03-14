@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
   <link rel="stylesheet" href="{{ asset('stisla/chartjs/dist/Chart.min.css') }}">
-  <link rel="icon" type="image/x-icon" href="{{ asset('sona/img/logo.png') }}">
+  <link rel="icon" height='20px' type="image/x-icon" href="{{ asset('sona/img/logo.png') }}">
 </head>
 
 <body>

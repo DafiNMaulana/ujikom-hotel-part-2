@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.manage-kamar');
 // });
 Route::get('/', 'tamu\tamuController@index');
+Route::get('/chart', 'admin\statistikController@data_chart');
 Route::get('/ruang', 'tamu\ruangController@index');
 Route::get('/about', 'tamu\tamuController@about')->name('about.index');
 Route::get('/detail/{kamar}', 'tamu\detailController@index')->name('detail.index');
