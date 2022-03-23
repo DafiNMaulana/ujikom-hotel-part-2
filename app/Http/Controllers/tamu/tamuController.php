@@ -49,8 +49,16 @@ class tamuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Kamar $kamar)
     {
+        // $kamar = DB::table('kamar')->get();
+        // $jum = $request->jumlah_kamar_dipesan;
+        // if($jum > $kamar->jumlah_kamar ) {
+        //     return back();
+        // } else {
+        //     dd($request->all());
+        // }
+
         $rules = [
             'tanggal_checkin' => 'required|after_or_equal:yesterday',
             'tanggal_checkout' => 'required|after:tanggal_checkin',
@@ -101,6 +109,7 @@ class tamuController extends Controller
         $pemesanan->no_hp = ($request->no_hp);
         $pemesanan->kamar_id =($request->kamar_id);
         $pemesanan->save();
+
 
         if ($pemesanan) {
             return redirect()->route('invoice', [$pemesanan])->with(session()->flash('iziToast'));

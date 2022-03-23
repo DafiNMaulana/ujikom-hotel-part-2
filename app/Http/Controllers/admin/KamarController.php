@@ -98,7 +98,7 @@ class KamarController extends Controller
     public function edit($id)
     {
         $kamar = kamar::find($id);
-        return view('modal.edit-kamar', compact('kamar'));
+        return view('admin.modal.edit-kamar', compact('kamar'));
     }
 
     /**
