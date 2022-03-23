@@ -84,7 +84,6 @@ $(document).ready(function() {
                 $("#edit_modal").modal('hide')
                     window.location.reload()
                     alert('Data berhasil diubah')
-                    $('.btn-addfasi').style('display', 'none')
                 },
                 error : function(error) {
                     console.log(error.responseJSON);

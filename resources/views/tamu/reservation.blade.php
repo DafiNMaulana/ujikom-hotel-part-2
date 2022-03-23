@@ -44,14 +44,14 @@ Reservation
                         </div>
                         <div class="check-input">
                             <label for="pemesan-input">Customer Name:</label>
-                            <input type="text" class="pemesan" placeholder='*EX : Diqi ziyad candramawa maulana' required name="nama_pemesan" value="{{ old('nama_pemesan') }}" autofokus @error('nama_pemesan') style="border: 1px solid red;" @enderror id="pemesan-input">
+                            <input type="text" class="pemesan" onkeypress='validateName(event)' placeholder='*EX : Diqi ziyad candramawa maulana' required name="nama_pemesan" value="{{ old('nama_pemesan') }}" autofokus @error('nama_pemesan') style="border: 1px solid red;" @enderror id="pemesan-input">
                                 <label @error('nama_pemesan') class="text-danger" @enderror> @error('nama_pemesan') {{ $message }} @enderror</label>
                         </div>
                         <div class="check-input mt-2">
                             <label for="pemesan-input">Guest Name:</label>
-                            <input type="text" class="pemesan" placeholder='*EX : Putri Angraini puspita maulani' required name="nama_tamu"autofokus value="{{ old('nama_tamu') }}" @error('nama_tamu') style="border: 1px solid red;" @enderror id="pemesan-input">
+                            <input type="text" class="pemesan" onkeypress='validateName(event)' placeholder='*EX : Putri Angraini puspita maulani' required name="nama_tamu"autofokus value="{{ old('nama_tamu') }}" @error('nama_tamu') style="border: 1px solid red;" @enderror id="pemesan-input">
                             <label @error('nama_tamu') class="text-danger" @enderror> @error('nama_tamu') {{ $message }} @enderror</label>
-                            <label for="pemesan-input" class="d-none text-danger lable">Nama tidak boleh angka</label>
+                            <label for="pemesan-input" class="d-none text-danger ">Nama tidak boleh angka</label>
                         </div>
                     </div>
                     <div class="col-6">

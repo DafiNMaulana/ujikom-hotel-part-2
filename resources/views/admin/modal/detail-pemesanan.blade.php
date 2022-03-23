@@ -46,10 +46,13 @@
                         @csrf
                         <input type="hidden" value="{{ $pemesanan->id }}" name="id" id="id_data"/>
                         <select name="status" class="form-control form-control-sm">
-                            <option value="pesan"> Permintaan</option>
+                            @if ($pemesanan->status_pemesanan == 'unpaid')
+                            <option value="cancel">Cancel</option>
                             <option value="checkin" selected> Check IN</option>
+                            @endif
+                            @if ($pemesanan->status_pemesanan == 'checkin')
                             <option value="checkout"> Check OUT</option>
-                            <option value="batal"> Cancel</option>
+                            @endif
                         </select>
                     </form> </td>
                 <td> <button type="button" id="btn-update-status" class="btn btn-sm btn-success ml-2">Update</button> </td>
