@@ -29,7 +29,7 @@ class adminController extends Controller
      */
     public function create()
     {
-        //
+        response(404);
     }
 
     /**
@@ -86,6 +86,32 @@ class adminController extends Controller
     {
         $admin = admin::find($id);
         return view('admin.modal.detail-admin', ['admin' => $admin]);
+    }
+
+    public function profiles()
+    {
+        // $admin = admin::find($id);
+        return view('admin.profiles');
+    }
+
+    public function updateProfiles(Request $request, ) {
+        $validatedData = $request->validate([
+            'nama'                  => 'required|unique:admin',
+            'username'              => 'unique:admin|max:20|min:3',
+            'password'              => 'min:6|required_with:pw_confirmation|same:pw_confirmation',
+            'pw_confirmation'       => 'min:6'
+        ],
+        [
+            'nama.required'=>'Nama Harus diisi !',
+            'nama.unique'             => 'Nama sudah ditambahkan',
+            'username.unique'         => 'username sudah ditambahkan',
+            'username.max'            => 'username tidak boleh lebih dari 12 karakter',
+            'username.min'            => 'Mohon masukan minimal 3 karakter',
+            'password.min'            => 'Masukan Password seenggaknya 6 karakter',
+            'password.same'           => 'Ups! password nya ngga sama gan',
+            'pw_confirmation.min'     => 'Masukan Password seenggaknya 6 karakter',
+        ]);
+        if($request->nama != )
     }
 
     /**

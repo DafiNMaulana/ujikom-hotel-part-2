@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.manage-kamar');
 // });
 Route::get('/', 'tamu\tamuController@index');
-Route::get('/chart', 'admin\statistikController@data_chart');
+Route::get('/chart  ', 'admin\statistikController@data_chart');
 Route::get('/ruang', 'tamu\ruangController@index');
 Route::get('/about', 'tamu\tamuController@about')->name('about.index');
 Route::get('/detail/{kamar}', 'tamu\detailController@index')->name('detail.index');
@@ -42,5 +42,6 @@ Route::group(['middleware' => ['auth', 'authLevel:admin, resepsionis']], functio
     Route::resource('admin/manage-pemesanan', 'admin\pemesananController');
     Route::resource('admin/statistik', 'admin\statistikController');
     Route::get('/search', 'admin\PemesananController@search')->name('search');
+    Route::get('/profile', 'admin\adminController@profiles')->name('profile');
 });
 

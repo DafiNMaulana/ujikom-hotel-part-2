@@ -56,7 +56,7 @@ class tamuController extends Controller
             'tanggal_checkout' => 'required|after:tanggal_checkin',
             'jumlah_kamar_dipesan' => 'required|numeric|integer|max:999|min:1',
             'nama_pemesan' => 'required|unique:pemesanan',
-            'nama_tamu' => 'required|unique:pemesanan',
+            'nama_tamu' => 'required|unique:pemesanan|not_regex:/[0-9!@#$%^&*]/',
             'email_pemesan' => 'email|required|unique:pemesanan',
             'no_hp' => 'required|unique:pemesanan|min:6|max:20',
         ];
