@@ -25,7 +25,7 @@ $(document).ready(function() {
         $('.btn-detail').on('click', function() {
             let id = $(this).data('id')
             $.ajax({
-                url : `/admin/kamar/${id}/fasilitas/${id}`,
+                url: `/admin/kamar/${id}/fasilitas/${id}`,
                 method : "GET",
                 success : function(data) {
                 //  console.log(data)

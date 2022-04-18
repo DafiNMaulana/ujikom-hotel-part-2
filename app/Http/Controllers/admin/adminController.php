@@ -111,7 +111,6 @@ class adminController extends Controller
             'password.same'           => 'Ups! password nya ngga sama gan',
             'pw_confirmation.min'     => 'Masukan Password seenggaknya 6 karakter',
         ]);
-        if($request->nama != )
     }
 
     /**

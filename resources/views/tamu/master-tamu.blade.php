@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="{{ asset('sona/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('stisla/izitoast/dist/css/iziToast.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('sona/img/logo.png') }}">
+    <style>
+        .btn-login:hover {
+            background-color: #dfa974;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="cobi">
@@ -142,7 +148,9 @@
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
+                                <ul class="mainmenu">
+                                    <a href="" class="btn bg-none rounded-pill shadow btn-login" style="width: 80px; border: 2px solid #dfa974;">Login</a>
+                                </ul>
                             </div>
                         </div>
                     </div>

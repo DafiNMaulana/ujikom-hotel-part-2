@@ -20,7 +20,6 @@ Edit Kamar
           </div>
         </div>
         @endif
-        @endif
         <div class="card-body">
             <form action="{{ route('manage-kamar.update', $kamar->id) }}" method="post" enctype="multipart/form-data">
                 @method('put')

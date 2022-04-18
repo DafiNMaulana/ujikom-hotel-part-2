@@ -4,7 +4,6 @@ namespace App\Http\Controllers\tamu;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\pemesanan;
 use App\Models\kamar;
 use Illuminate\Support\Carbon;
@@ -51,17 +50,32 @@ class tamuController extends Controller
      */
     public function store(Request $request)
     {
+
+        // return $request->all();
+        $kamar = kamar::select('id', 'jumlah_kamar')->where('id', $request->kamar_id)->first();
+        if( $kamar->jumlah_kamar < $request->jumlah_kamar_dipesan) {
+            return back()->with('jumKmr', 'Jumlah kamar dipesan melebihi jumlah kamar tersedia');
+        }
+
+
+        $lamanya = $this->lamanya($request->tanggal_checkin, $request->tanggal_checkout);
+        if($lamanya > 30) {
+            return back()->with('jumMlm', 'Lama menginap maksimal 30 hari');
+        }
+
         $rules = [
             'tanggal_checkin' => 'required|after_or_equal:yesterday',
             'tanggal_checkout' => 'required|after:tanggal_checkin',
             'jumlah_kamar_dipesan' => 'required|numeric|integer|max:999|min:1',
-            'nama_pemesan' => 'required|unique:pemesanan',
+            'nama_pemesan' => 'required|unique:pemesanan|not_regex:/[0-9!@#$%^&*]/',
             'nama_tamu' => 'required|unique:pemesanan|not_regex:/[0-9!@#$%^&*]/',
             'email_pemesan' => 'email|required|unique:pemesanan',
             'no_hp' => 'required|unique:pemesanan|min:6|max:20',
         ];
 
         $messages = [
+            'nama_tamu.not_regex'=>'Guest names cannot contain numbers or special characters',
+            'nama_pemesan.not_regex'=>'The customer name cannot contain numbers or special characters',
             'tanggal_checkin.required' => 'Check IN date is required',
             'tanggal_checkout.required' => 'Check OUT date is required',
             'tanggal_checkin.after_or_equal' => 'The Check IN date must be today or later',
@@ -101,6 +115,7 @@ class tamuController extends Controller
         $pemesanan->no_hp = ($request->no_hp);
         $pemesanan->kamar_id =($request->kamar_id);
         $pemesanan->save();
+
 
         if ($pemesanan) {
             return redirect()->route('invoice', [$pemesanan])->with(session()->flash('iziToast'));

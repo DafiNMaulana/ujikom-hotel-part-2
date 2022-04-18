@@ -29,11 +29,19 @@ Reservation
             <form action="{{ route('tamu.store') }}" id='insert-pemesanan' method="post">
                 @csrf
                 <div class="row justify-content-center">
+                    @if (session()->has('ups'))
+                        <script>
+                            alert('updsssss')
+                        </script>
+                    @endif
                     <div class="col-6">
                         <div class="check-date">
                             <label for="date-in">Check In:</label>
-                            <input type="date" class="pemesan" required name="tanggal_checkin" value="{{ old('tanggal_checkin') }}" autofokus @error('tanggal_checkin') style="border: 1px solid red;" @enderror id="date-in">
-                                <label @error('tanggal_checkin') class="text-danger" @enderror> @error('tanggal_checkin') {{ $message }} @enderror</label>
+                            <input type="date" class="pemesan" required name="tanggal_checkin" value="{{ old('tanggal_checkin') }}" autofokus @if (session()->has('jumMlm')) style="border: 1px solid red;" @endif @error('tanggal_checkin') style="border: 1px solid red;" @enderror id="date-in">
+                            <label @error('tanggal_checkin') class="text-danger" @enderror> @error('tanggal_checkin') {{ $message }} @enderror</label>
+                            @if (session()->has('jumMlm'))
+                                <label class="text-danger"> {{ session('jumMlm') }} </label>
+                            @endif
                             {{-- <i class="icon_calendar"></i> --}}
                         </div>
                         <div class="check-date">
@@ -50,7 +58,8 @@ Reservation
                         <div class="check-input mt-2">
                             <label for="pemesan-input">Guest Name:</label>
                             <input type="text" class="pemesan" placeholder='*EX : Putri Angraini puspita maulani' required name="nama_tamu"autofokus value="{{ old('nama_tamu') }}" @error('nama_tamu') style="border: 1px solid red;" @enderror id="pemesan-input">
-                                <label @error('nama_tamu') class="text-danger" @enderror> @error('nama_tamu') {{ $message }} @enderror</label>
+                            <label @error('nama_tamu') class="text-danger" @enderror> @error('nama_tamu') {{ $message }} @enderror</label>
+                            <label for="pemesan-input" class="d-none text-danger ">Nama tidak boleh angka</label>
                         </div>
                     </div>
                     <div class="col-6">
@@ -66,8 +75,11 @@ Reservation
                         </div>
                         <div class="check-input mb-2">
                             <label for="pemesan-input">Number of Rooms Booked:</label>
-                            <input type="number" required name="jumlah_kamar_dipesan" placeholder='Minimum 1 | Maximum' class="pemesan"autofokus value="{{ old('jumlah_kamar_dipesan') }}" @error('jumlah_kamar_dipesan') style="border: 1px solid red;" @enderror id="pemesan-input">
-                                <label @error('jumlah_kamar_dipesan') class="text-danger" @enderror> @error('jumlah_kamar_dipesan') {{ $message }} @enderror</label>
+                            <input type="number" required name="jumlah_kamar_dipesan" placeholder='Minimum 1 | Maximum' class="pemesan"autofokus value="{{ old('jumlah_kamar_dipesan') }}" @if (session()->has('jumKmr')) style="border: 1px solid red;" @endif @error('jumlah_kamar_dipesan') style="border: 1px solid red;" @enderror id="pemesan-input">
+                            <label @error('jumlah_kamar_dipesan') class="text-danger" @enderror> @error('jumlah_kamar_dipesan') {{ $message }} @enderror</label>
+                            @if (session()->has('jumKmr'))
+                                <label class="text-danger"> {{ session('jumKmr') }} </label>
+                            @endif
                         </div>
                         <div class="check-input">
                             <label for="pemesan-input">Room Name:</label>
@@ -88,27 +100,6 @@ Reservation
 
 @push('page-script')
 <script>
-
-    // // No hp tamu reservation ==================
-    // function setInputFilter(textbox, inputFilter) {
-    // ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-    //     textbox.addEventListener(event, function() {
-    //     if (inputFilter(this.value)) {
-    //         this.oldValue = this.value;
-    //         this.oldSelectionStart = this.selectionStart;
-    //         this.oldSelectionEnd = this.selectionEnd;
-    //     } else if (this.hasOwnProperty("oldValue")) {
-    //         this.value = this.oldValue;
-    //         this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-    //     } else {
-    //         this.value = "";
-    //     }
-    //     });
-    // });
-    // }
-    // setInputFilter(document.getElementById("no_hp"), function(value) {
-    //     return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-    // });
     function validate(evt) {
         var theEvent = evt || window.event;
 
@@ -124,6 +115,25 @@ Reservation
         if( !regex.test(key) ) {
             theEvent.returnValue = false;
             if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+    function validateName(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+        // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[a-z ]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+            $('.lable').style('display', 'inline');
         }
     }
 

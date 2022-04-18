@@ -46,10 +46,13 @@
                         @csrf
                         <input type="hidden" value="{{ $pemesanan->id }}" name="id" id="id_data"/>
                         <select name="status" class="form-control form-control-sm">
-                            <option value="pesan"> Permintaan</option>
+                            @if ($pemesanan->status_pemesanan == 'unpaid')
+                            <option value="cancel">Cancel</option>
                             <option value="checkin" selected> Check IN</option>
+                            @endif
+                            @if ($pemesanan->status_pemesanan == 'checkin')
                             <option value="checkout"> Check OUT</option>
-                            <option value="batal"> Cancel</option>
+                            @endif
                         </select>
                     </form> </td>
                 <td> <button type="button" id="btn-update-status" class="btn btn-sm btn-success ml-2">Update</button> </td>
@@ -123,23 +126,23 @@
 <script>
 
     $('#btn-update-status').on('click', function() {
-            let id = $("#update-form").find("#id_data").val()
-            let edit_admin = $('#update-form').serialize()
-            $.ajax({
-                url : `/admin/manage-pemesanan/${id}`,
-                type : 'post',
-                method : "patch",
-                data : edit_admin,
-                success : function(data) {
-                $("#edit_modal").modal('hide')
-                window.location.assign('/admin/manage-pemesanan')
-                alert('Data berhasil diubah')
-                },
-                error : function(error) {
-                    console.log(error.responseJSON);
-                    let err_log = error.responseJSON.errors;
-                }
-            })
-        });
+        let id = $("#update-form").find("#id_data").val()
+        let edit_admin = $('#update-form').serialize()
+        $.ajax({
+            url : `/admin/manage-pemesanan/${id}`,
+            type : 'post',
+            method : "patch",
+            data : edit_admin,
+            success : function(data) {
+            $("#edit_modal").modal('hide')
+            window.location.assign('/admin/manage-pemesanan')
+            alert('Data berhasil diubah')
+            },
+            error : function(error) {
+                console.log(error.responseJSON);
+                let err_log = error.responseJSON.errors;
+            }
+        })
+    });
 
 </script>

@@ -35,7 +35,7 @@ class pemesananController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -46,7 +46,7 @@ class pemesananController extends Controller
      */
     public function store(Request $request)
     {
-
+        abort(404);
     }
 
     /**

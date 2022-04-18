@@ -14,7 +14,7 @@ class detailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Kamar $kamar, fasilitasKamar $fasilita)
+    public function index(Kamar $kamar)
     {
         $fasilitasKamar = fasilitasKamar::where('kamar_id', $kamar->id)->get();
         return view('tamu.detail', ['fasilitasKamar'=>$fasilitasKamar, 'kamar'=>$kamar]);

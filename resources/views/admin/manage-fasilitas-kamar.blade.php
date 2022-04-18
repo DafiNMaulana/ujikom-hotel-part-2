@@ -12,7 +12,7 @@ Manage Fasilitas Kamar
     <div class="card">
         <div class="card">
             <div class="card-header">
-                <button href="#create_modal"@if(session('pesan')) class="d-none" @endif @if(session('destroy')) class="d-block" @endif class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#create_modal" style="border-radius: 4px !important;"><i class="fas fa-plus"></i> Tambah Fasilitas Kamar</button>
+                <button href="#create_modal"@if(session('pesan')) class="d-none" @endif @if(session('destroy')) class="d-block btn btn-icon icon-left btn-primary" @endif class="btn btn-icon icon-left btn-primary btn-addfasi" data-toggle="modal" data-target="#create_modal" style="border-radius: 4px !important;"><i class="fas fa-plus"></i> Tambah Fasilitas Kamar</button>
             </div>
             @if(session('error'))
             <div class="alert alert-danger alert-dismissible show fade">
