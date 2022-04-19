@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(kamarTableSeeder::class);
         // $this->call(pemesananTableSeeder::class);
         $this->call(fasilitasKamarTableSeeder::class);
-        factory(App\Models\pemesanan::class, 100)->create();
+        factory(App\Models\pemesanan::class, 10)->create();
     }
 }

@@ -22,6 +22,6 @@ class pemesanan extends Model
         'tanggal_pesan'];
 
         public function kamar() {
-            return $this->belongsTo(kamar::class, 'id');
+            return $this->belongsTo(kamar::class, 'kamar_id', 'id');
         }
 }

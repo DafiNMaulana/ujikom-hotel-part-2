@@ -39,7 +39,7 @@ class tamuController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -51,11 +51,7 @@ class tamuController extends Controller
     public function store(Request $request)
     {
 
-        // return $request->all();
-        $kamar = kamar::select('id', 'jumlah_kamar')->where('id', $request->kamar_id)->first();
-        if( $kamar->jumlah_kamar < $request->jumlah_kamar_dipesan) {
-            return back()->with('jumKmr', 'Jumlah kamar dipesan melebihi jumlah kamar tersedia');
-        }
+        $kamar = kamar::select('id', 'jumlah_kamar', 'nama_kamar')->where('id', $request->kamar_id)->first();
 
 
         $lamanya = $this->lamanya($request->tanggal_checkin, $request->tanggal_checkout);
@@ -63,17 +59,16 @@ class tamuController extends Controller
             return back()->with('jumMlm', 'Lama menginap maksimal 30 hari');
         }
 
-        $rules = [
+        $request->validate([
             'tanggal_checkin' => 'required|after_or_equal:yesterday',
             'tanggal_checkout' => 'required|after:tanggal_checkin',
-            'jumlah_kamar_dipesan' => 'required|numeric|integer|max:999|min:1',
+            'jumlah_kamar_dipesan' => "required|numeric|integer|max:{$kamar->jumlah_kamar}|min:1",
             'nama_pemesan' => 'required|unique:pemesanan|not_regex:/[0-9!@#$%^&*]/',
             'nama_tamu' => 'required|unique:pemesanan|not_regex:/[0-9!@#$%^&*]/',
             'email_pemesan' => 'email|required|unique:pemesanan',
             'no_hp' => 'required|unique:pemesanan|min:6|max:20',
-        ];
-
-        $messages = [
+        ],
+        [
             'nama_tamu.not_regex'=>'Guest names cannot contain numbers or special characters',
             'nama_pemesan.not_regex'=>'The customer name cannot contain numbers or special characters',
             'tanggal_checkin.required' => 'Check IN date is required',
@@ -87,22 +82,16 @@ class tamuController extends Controller
             'email_pemesan.unique' => 'E-mail has been registered',
             'email_pemesan.required' => 'E-mail is required',
             'no_hp.required' => 'Phone number is required',
-            'no_hp.unique' => 'Phone number has been regustered',
+            'no_hp.unique' => 'Phone number has been registered',
             'no_hp.min' => 'Phone number at least 6 numbers',
             'no_hp.max' => 'Phone number up to 15 numbers',
             'jumlah_kamar_dipesan.required' => 'Number of rooms booked is required',
             'jumlah_kamar_dipesan.numeric' => 'Number of rooms must be a number',
             'jumlah_kamar_dipesan.integer' => 'Number of rooms must be a number',
-            'jumlah_kamar_dipesan.max' => 'maximum can only book 999 rooms',
+            'jumlah_kamar_dipesan.max' => "There are only {$kamar->jumlah_kamar} {$kamar->nama_kamar} rooms available",
             'jumlah_kamar_dipesan.min' => 'Minimum order 1 room',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
+        ]);
+        
         $pemesanan = new pemesanan;
         $pemesanan->nama_pemesan = ($request->nama_pemesan);
         $pemesanan->nama_tamu = ($request->nama_tamu);
@@ -111,6 +100,11 @@ class tamuController extends Controller
         $pemesanan->tanggal_checkout = ($request->tanggal_checkout);
         $pemesanan->tanggal_pesan = Carbon::now();
         $pemesanan->jumlah_kamar_dipesan = ($request->jumlah_kamar_dipesan);
+        if($request->jumlah_kamar_dipesan) {
+            $kamar->update([
+                'jumlah_kamar' => $kamar->jumlah_kamar - $request->jumlah_kamar_dipesan
+            ]);
+        }
         $pemesanan->status_pemesanan = 'unpaid';
         $pemesanan->no_hp = ($request->no_hp);
         $pemesanan->kamar_id =($request->kamar_id);
@@ -124,7 +118,7 @@ class tamuController extends Controller
 
     public function invoice(pemesanan $pemesanan, $id) {
         $kamar = kamar::all();
-        $pemesanan = pemesanan::find($id);
+        $pemesanan = pemesanan::with('kamar')->find($id);
         return view('tamu.invoice', ['pemesanan' => $pemesanan]);
     }
 
@@ -136,7 +130,7 @@ class tamuController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**

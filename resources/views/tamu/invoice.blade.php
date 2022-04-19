@@ -81,7 +81,7 @@ Invoice success
                                     Email : {{ $pemesanan->email_pemesan }}
                                 </div>
                                 <div class="my-1">
-                                    Order time : {{ $pemesanan->tanggal_pesan }}
+                                    Order time : {{ date('l d M Y', strtotime($pemesanan->tanggal_pesan)) }}
                                 </div>
                                 <div class="my-1"><i class="fa fa-phone fa-flip-horizontal text-secondary"></i> <b class="text-600">{{ $pemesanan->no_hp }}</b></div>
                             </div>
@@ -129,7 +129,7 @@ Invoice success
                                     <tr></tr>
                                     <tr class=" bgc-default-l4">
                                         <td>2</td>
-                                        <td>Check IN : {{ date('d-m-Y', strtotime($pemesanan->tanggal_checkin)) }}, Check OUT : {{ date('d-m-Y', strtotime($pemesanan->tanggal_checkout)) }}</td>
+                                        <td>Check IN : {{ date('l d M Y', strtotime($pemesanan->tanggal_checkin)) }}, Check OUT : {{ date('l d M Y', strtotime($pemesanan->tanggal_checkout)) }}</td>
                                         <td>
                                             <?php
                                             $date1=date_create($pemesanan->tanggal_checkin);
